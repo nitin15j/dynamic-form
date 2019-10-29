@@ -1,0 +1,154 @@
+{
+  "version": "1.0.0",
+  "title": "AccountMgmtMS",
+  "host": "localhost:8211",
+  "basePath": "/",
+  "logoUrl": "https://s3-bucket-url",
+  "services": [
+    {
+      "method": "getAccount",
+      "path": "/account/{accId}",
+      "verb": "get",
+      "description": "Get a single Account Details",
+      "input": [
+        {
+          "key": "accId",
+          "required": true,
+          "in": "path",
+          "controlType": "textbox",
+          "type": "",
+          "description": "The Account No of the user to get"
+        },
+		{
+          "key": "name",
+          "required": false,
+          "in": "path",
+          "controlType": "textbox",
+          "type": "",
+          "description": "The Account No of the user to get"
+        }
+      ],
+      "output": {
+        "type": "application/json",
+        "200": {
+          "description": "user response",
+          "type": "#Account"
+        }
+      }
+    },
+    {
+      "method": "createAccount",
+      "path": "/createaccount",
+      "verb": "post",
+      "description": "Account Creation Service",
+      "input": [
+        {
+          "key": "name",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": "",
+          "description": "account should be created"
+        },
+		{
+          "key": "mobile",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": "",
+          "description": "account should be created"
+        }
+      ],
+      "output": {
+        "type": "application/json",
+        "200": {
+          "description": "Account response",
+          "type": "#Account"
+        }
+      }
+    },
+    {
+      "method": "updateAccount",
+      "path": "/updateaccount",
+      "verb": "put",
+      "description": "Update Account",
+      "input": [
+        {
+          "key": "account",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": "",
+          "description": "account should be updated"
+        }
+      ],
+      "output": {
+        "type": "application/json",
+        "200": {
+          "description": "ok",
+          "type": "#Account"
+        }
+      }
+    },
+    {
+      "method": "deleteAccount",
+      "path": "/deleteaccount",
+      "verb": "delete",
+      "description": "Delete an account",
+      "input": [
+        {
+          "key": "accId",
+          "in": "query",
+          "required": true,
+          "controlType": "textbox",
+          "type": "",
+          "description": "account id"
+        }
+      ],
+      "output": {
+        "type": "application/json",
+        "200": {
+          "description": "ok",
+          "type": "#Account"
+        }
+      }
+    }
+  ],
+  "types": [
+    {
+      "type": "#Account",
+      "description": "Account DTO",
+      "properties": [
+        {
+          "name": "accId",
+          "required": true,
+          "type": "string",
+          "length": "200",
+          "description": "account id"
+        },
+		
+        {
+          "name": "status",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "#Customer",
+      "description": "Custom DTO",
+      "properties": [
+        {
+          "name": "custId",
+          "required": true,
+          "type": "string",
+          "length": "200",
+          "description": "customer id"
+        },
+        {
+          "name": "status",
+          "type": "boolean"
+        }
+      ]
+    }
+  ]
+}

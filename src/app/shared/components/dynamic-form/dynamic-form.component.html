@@ -1,0 +1,51 @@
+<mat-card style=" width:100%;height:auto; padding: 0px" class="mat-elevation-z8">
+    
+    <mat-card-header class="mat-card-header-big">
+        <mat-card-title class="mat-card-title-big"> {{service.description}} : {{service.method}} </mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content style="padding:20px 0 20px 20px">
+          <form (ngSubmit)="onSubmit()" [formGroup]="group">
+  
+          <div class="form-group row"  *ngFor="let control of service.input" >
+            
+            <label for="hcpName" class="col-sm-2 col-form-label">
+                  {{control.key}}
+  
+                  <span *ngIf="control.required" class="mandatory">*</span>
+            </label>
+            
+            <div class="col-sm-3 input">
+                <div [ngSwitch]="control.controlType">
+        
+                  <mat-form-field class="demo-full-width" [formGroup]="group">
+                        <input matInput *ngSwitchCase="'textbox'" [formControlName]="control.key"
+                                    [id]="control.key" [placeholder]="control.key" [type]="control.type">
+                       <!-- <ng-container *ngFor="let validation of control.validations;" ngProjectAs="mat-error">
+                            <mat-error *ngIf="group.get(control.key).hasError(validation.name)">{{validation.message}}</mat-error>
+                        </ng-container>-->            
+                    </mat-form-field>
+                  
+                </div>
+            </div>
+          </div> 
+          <div class="form-row">
+  
+              <div [ngSwitch]="service.verb">
+                <button *ngSwitchCase="'get'"  mat-raised-button color="primary" [disabled]="!group.valid" (click)="this.getData()">Get</button>
+                <button *ngSwitchCase="'post'" mat-raised-button color="primary" [disabled]="!group.valid" (click)="this.postData()">Post</button>
+                <button *ngSwitchCase="'put'" mat-raised-button color="primary" [disabled]="!group.valid" (click)="this.putData()">Put</button>
+                <button *ngSwitchCase="'delete'" mat-raised-button color="primary" [disabled]="!group.valid" (click)="this.deleteData()">Delete</button>
+              </div> 
+      
+          </div>
+             
+        </form>
+        <div class="form-row">
+            result : {{result}}
+
+        </div>
+        <!-- column ends here-->
+      </mat-card-content>
+    </mat-card>
+    
