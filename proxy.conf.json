@@ -1,0 +1,14 @@
+{
+  "/account": {
+    "target": "http://acemicro.practice.softwarization.net",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/createaccount": {
+    "target": "http://acemicro.practice.softwarization.net",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+ }

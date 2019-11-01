@@ -20,10 +20,5 @@ export class ServiceDetailComponent implements OnInit {
 
    this.service = this.microService.config.services[selectedServiceIndex];
   }
-
-  buttonClicked()
-  {
-    alert("hello");
-  }
 }
 

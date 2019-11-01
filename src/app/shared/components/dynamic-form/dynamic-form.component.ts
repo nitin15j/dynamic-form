@@ -19,7 +19,7 @@ export class DynamicFormComponent implements OnInit {
 
     this.result = " This is result";
     //setting the api base path, this will hold true for all the api endpoints
-    this.apiGateway.baseApiUrl = '/';
+    this.apiGateway.baseApiUrl = '';
 
     let group: any = {};
     this.service.input.forEach(control => {
@@ -31,37 +31,36 @@ export class DynamicFormComponent implements OnInit {
   getData()
   {
     alert("in Get");
-    const endPoint = '/rest/api/get';
+    let endPoint = this.service.path
     let params = new HttpParams();
     
     this.service.input.forEach(control => {
       if(control.in === "path")
       {
-        params = params.set(control.key, this.group.value[control.key]);
+        endPoint = endPoint + this.group.value[control.key];
+       // params = params.set(control.key, this.group.value[control.key]);
       }
     });
     // let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
     //let params = new HttpParams().set('role', "admin").set('userId', "01");
     
-    // Sending API get request to fetch dashboard data point
-    return this.apiGateway.get(endPoint, params);
+    this.apiGateway.get(endPoint, params).subscribe(response => {
+      this.result = JSON.stringify(response);
+    });
   }
 
   postData()
   {
-    alert("in Post");
-    const endPoint = '/rest/api/post';
-     // Sending API Post request with HCP Create form values to Craete an HCP
-     const doctorData = {
-      //role: this.group.role.value,
-      //firstname: this.group.doctorFirstname.value,
-      //lastname: this.group.doctorLastname.value,
-     // staffPractice: [{ staffpracticeid: this.group.practice.value }],
-      staffType:"Doctor"
-    };
-     return this.apiGateway.post(endPoint, doctorData).subscribe(
-      response => {
-          let a;
+    const endPoint = this.service.path;
+    let data = {}; 
+    this.service.input.forEach(control => {
+      if(control.in === "body"){
+        data[control.key] = this.group.value[control.key];
+      }
+    });
+    
+    this.apiGateway.post(endPoint, data).subscribe(response =>{
+        this.result = JSON.stringify(response);
       },
       error => {
         const data: any = JSON.parse(error);
@@ -70,28 +69,46 @@ export class DynamicFormComponent implements OnInit {
   }
   putData()
   {
-    alert("in Put");
-    const endPoint = '/rest/api/put';
-    const doctorData = {
-     // staffId: form.id.value,
-      //role: form.role.value,
-      //firstname: form.firstname.value,
-      staffType:"Doctor"
-    };
-    return this.apiGateway.put(endPoint, doctorData).subscribe(
-      response => {
-        /**
-         * passed the error response to the toast/message service for notifying the user
-         */
-        const data: any = JSON.parse(response.body);
-       },
+    const endPoint = this.service.path;
+    let data = {}; 
+    this.service.input.forEach(control => {
+      if(control.in === "body"){
+        data[control.key] = this.group.value[control.key];
+      }
+    });
+    
+    this.apiGateway.put(endPoint, data).subscribe(response => {
+        this.result = JSON.stringify(response);
+      },
       error => {
         const data: any = JSON.parse(error);
-      }
+            }
     );
   }
+
   deleteData()
   {
-    alert("in Delete");
+    let endPoint = this.service.path;
+    let data = {}; 
+
+    this.service.input.forEach(control => {
+      if(control.in === "body"){
+        endPoint = endPoint + this.group.value[control.key];
+      }
+    });
+    
+     this.apiGateway.delete(endPoint).subscribe(
+      response => {
+        this.result = JSON.stringify(response);
+      },
+      error => {
+        const data: any = JSON.parse(error);
+            }
+    );
+  }
+
+  renderResult(data)
+  {
+    //if( typeof(data))
   }
 }

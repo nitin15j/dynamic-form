@@ -2,12 +2,12 @@
   "version": "1.0.0",
   "title": "AccountMgmtMS",
   "host": "localhost:8211",
-  "basePath": "/",
+  "basePath": "http://acemicro.practice.softwarization.net",
   "logoUrl": "https://s3-bucket-url",
   "services": [
     {
       "method": "getAccount",
-      "path": "/account/{accId}",
+      "path": "/account/",
       "verb": "get",
       "description": "Get a single Account Details",
       "input": [
@@ -16,21 +16,12 @@
           "required": true,
           "in": "path",
           "controlType": "textbox",
-          "type": "",
-          "description": "The Account No of the user to get"
-        },
-		{
-          "key": "name",
-          "required": false,
-          "in": "path",
-          "controlType": "textbox",
-          "type": "",
-          "description": "The Account No of the user to get"
+          "type": ""
         }
       ],
       "output": {
         "type": "application/json",
-        "200": {
+        "success": {
           "description": "user response",
           "type": "#Account"
         }
@@ -43,25 +34,44 @@
       "description": "Account Creation Service",
       "input": [
         {
-          "key": "name",
+          "key": "accId",
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": "",
-          "description": "account should be created"
+          "type": ""
         },
-		{
-          "key": "mobile",
+		    {
+          "key": "cusId",
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": "",
-          "description": "account should be created"
+          "type": ""
+        },
+		    {
+          "key": "accName",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
+        },
+		    {
+          "key": "accBalance",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
+        },
+		    {
+          "key": "status",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
         }
       ],
       "output": {
         "type": "application/json",
-        "200": {
+        "success": {
           "description": "Account response",
           "type": "#Account"
         }
@@ -74,17 +84,44 @@
       "description": "Update Account",
       "input": [
         {
-          "key": "account",
+          "key": "accId",
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": "",
-          "description": "account should be updated"
+          "type": ""
+        },
+		    {
+          "key": "cusId",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
+        },
+		    {
+          "key": "accName",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
+        },
+		    {
+          "key": "accBalance",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
+        },
+		    {
+          "key": "status",
+          "in": "body",
+          "required": true,
+          "controlType": "textbox",
+          "type": ""
         }
       ],
       "output": {
         "type": "application/json",
-        "200": {
+        "success": {
           "description": "ok",
           "type": "#Account"
         }
@@ -98,16 +135,15 @@
       "input": [
         {
           "key": "accId",
-          "in": "query",
           "required": true,
+          "in": "path",
           "controlType": "textbox",
-          "type": "",
-          "description": "account id"
+          "type": ""
         }
       ],
       "output": {
         "type": "application/json",
-        "200": {
+        "success": {
           "description": "ok",
           "type": "#Account"
         }
@@ -122,9 +158,7 @@
         {
           "name": "accId",
           "required": true,
-          "type": "string",
-          "length": "200",
-          "description": "account id"
+          "type": "string"        
         },
 		
         {
@@ -140,9 +174,7 @@
         {
           "name": "custId",
           "required": true,
-          "type": "string",
-          "length": "200",
-          "description": "customer id"
+          "type": "string"
         },
         {
           "name": "status",
