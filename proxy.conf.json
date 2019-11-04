@@ -1,12 +1,24 @@
 {
   "/account": {
-    "target": "http://acemicro.practice.softwarization.net",
+    "target": "http://ec2-34-229-24-147.compute-1.amazonaws.com:8085",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/createaccount": {
-    "target": "http://acemicro.practice.softwarization.net",
+    "target": "http://ec2-34-229-24-147.compute-1.amazonaws.com:8085",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/updateaccount": {
+    "target": "http://ec2-34-229-24-147.compute-1.amazonaws.com:8085",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/deleteaccount": {
+    "target": "http://ec2-34-229-24-147.compute-1.amazonaws.com:8085",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
