@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "title": "AccountMgmtMS",
   "host": "localhost:8211",
-  "basePath": "http://acemicro.practice.softwarization.net",
+  "basePath": "http://ec2-34-229-24-147.compute-1.amazonaws.com:8085",
   "logoUrl": "https://s3-bucket-url",
   "services": [
     {
@@ -16,7 +16,7 @@
           "required": true,
           "in": "path",
           "controlType": "textbox",
-          "type": ""
+          "type": "string"
         }
       ],
       "output": {
@@ -38,35 +38,28 @@
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": ""
+          "type": "String"
         },
-		    {
-          "key": "cusId",
+        {
+          "key": "cusName",
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": ""
+          "type": "String"
         },
-		    {
-          "key": "accName",
+        {
+          "key": "accType",
           "in": "body",
-          "required": true,
+          "required": false,
           "controlType": "textbox",
-          "type": ""
+          "type": "String"
         },
-		    {
+        {
           "key": "accBalance",
           "in": "body",
-          "required": true,
+          "required": false,
           "controlType": "textbox",
-          "type": ""
-        },
-		    {
-          "key": "status",
-          "in": "body",
-          "required": true,
-          "controlType": "textbox",
-          "type": ""
+          "type": "String"
         }
       ],
       "output": {
@@ -88,35 +81,28 @@
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": ""
+          "type": "String"
         },
-		    {
-          "key": "cusId",
+        {
+          "key": "cusName",
           "in": "body",
           "required": true,
           "controlType": "textbox",
-          "type": ""
+          "type": "String"
         },
-		    {
-          "key": "accName",
+        {
+          "key": "accType",
           "in": "body",
-          "required": true,
+          "required": false,
           "controlType": "textbox",
-          "type": ""
+          "type": "String"
         },
-		    {
+        {
           "key": "accBalance",
           "in": "body",
-          "required": true,
+          "required": false,
           "controlType": "textbox",
-          "type": ""
-        },
-		    {
-          "key": "status",
-          "in": "body",
-          "required": true,
-          "controlType": "textbox",
-          "type": ""
+          "type": "String"
         }
       ],
       "output": {
@@ -133,12 +119,12 @@
       "verb": "delete",
       "description": "Delete an account",
       "input": [
-        {
+       {
           "key": "accId",
+          "in": "query",
           "required": true,
-          "in": "path",
           "controlType": "textbox",
-          "type": ""
+          "type": "string"
         }
       ],
       "output": {

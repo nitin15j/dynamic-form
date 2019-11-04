@@ -51,8 +51,8 @@ export class ApiGatewayService {
    * perform a DELETE request to the API. Returns an Observable stream.
    */
 
-  delete(path): Observable<any> {
-    return this.http.delete(`${this.baseApiUrl}${path}`);
+  delete(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+    return this.http.delete(`${this.baseApiUrl}${path}`, { params });
   }
 
  

@@ -1,4 +1,7 @@
-.errorMessage{
+::ng-deep .ngx-json-viewer {
+  overflow: auto !important;
+}
+  .errorMessage{
   color:red;
 }
 

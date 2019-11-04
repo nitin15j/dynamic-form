@@ -1,4 +1,8 @@
-<mat-card style=" width:100%;height:auto; padding: 0px" class="mat-elevation-z8">
+<div>
+   
+      <a [routerLink]="['/services']">Back
+      </a>
+<mat-card style=" width:100%;height:auto; padding: 0px; margin-bottom:10px; border:10px solid #858596;" class="mat-elevation-z8">
     
     <mat-card-header class="mat-card-header-big">
         <mat-card-title class="mat-card-title-big"> {{service.description}} : {{service.method}} </mat-card-title>
@@ -7,9 +11,10 @@
       <mat-card-content style="padding:20px 0 20px 20px">
           <form (ngSubmit)="onSubmit()" [formGroup]="group">
   
-          <div class="form-group row"  *ngFor="let control of service.input" >
-            
-            <label for="hcpName" class="col-sm-2 col-form-label">
+          <div class="form-group row"  >
+            <div *ngFor="let control of service.input" class="col-sm-6" >
+                <div class="form-group row"  >
+            <label for="hcpName" class="col-sm-3 col-form-label" style="padding-top: 20px;">
                   {{control.key}}
   
                   <span *ngIf="control.required" class="mandatory">*</span>
@@ -28,6 +33,8 @@
                   
                 </div>
             </div>
+          </div>
+          </div>
           </div> 
           <div class="form-row">
   
@@ -41,11 +48,20 @@
           </div>
              
         </form>
-        <div class="form-row">
-            result : {{result}}
-            <app-dynamic-table></app-dynamic-table>
-        </div>
         <!-- column ends here-->
       </mat-card-content>
     </mat-card>
     
+    <mat-card style=" width:100%;height:95%; padding: 0px;border:10px solid #32cd8e;" class="mat-elevation-z8">
+      <mat-card-header class="mat-card-header-big">
+        <mat-card-title class="mat-card-title-big"> Result: </mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content style="height:80%; overflow-y:auto; padding-bottom: 9px;">
+        <div style="height:200px;">
+          <ngx-json-viewer [json]="result" [expanded]="false"></ngx-json-viewer>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+</div>

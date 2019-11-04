@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { ControlConfig } from '../../contorl.config';
 import { ApiGatewayService } from '../../http/api-gateway.service';
 import { HttpParams } from '@angular/common/http';
+import { NotificationBarComponent } from '../notification-bar/notification-bar.component';
 
 @Component({
   selector: "app-dynamicform",
@@ -14,10 +15,10 @@ export class DynamicFormComponent implements OnInit {
   group: FormGroup;
   result;
 
-  constructor(private apiGateway: ApiGatewayService) {}
+  constructor(private apiGateway: ApiGatewayService, private notificationBar: NotificationBarComponent) {}
   ngOnInit() {
 
-    this.result = " This is result";
+    this.result = "Result will come here";
     //setting the api base path, this will hold true for all the api endpoints
     this.apiGateway.baseApiUrl = '';
 
@@ -30,7 +31,6 @@ export class DynamicFormComponent implements OnInit {
 
   getData()
   {
-    alert("in Get");
     let endPoint = this.service.path
     let params = new HttpParams();
     
@@ -43,9 +43,18 @@ export class DynamicFormComponent implements OnInit {
     });
     // let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
     //let params = new HttpParams().set('role', "admin").set('userId', "01");
-    
+    //this.result = this.service;
     this.apiGateway.get(endPoint, params).subscribe(response => {
-      this.result = JSON.stringify(response);
+      if(response === null){
+        this.notificationBar.show("Not able to found with Id ", 'Close', 'red-snackbar');
+
+        //alert("Account Id not found");
+      }
+      else
+      {
+        this.result = (response);
+        this.notificationBar.show("Found successfully", 'Close', 'blue-snackbar');
+      }
     });
   }
 
@@ -60,7 +69,8 @@ export class DynamicFormComponent implements OnInit {
     });
     
     this.apiGateway.post(endPoint, data).subscribe(response =>{
-        this.result = JSON.stringify(response);
+        this.result = JSON.parse(response.body);
+        this.notificationBar.show("Created successfully", 'Close', 'blue-snackbar');
       },
       error => {
         const data: any = JSON.parse(error);
@@ -78,7 +88,8 @@ export class DynamicFormComponent implements OnInit {
     });
     
     this.apiGateway.put(endPoint, data).subscribe(response => {
-        this.result = JSON.stringify(response);
+        this.result = JSON.parse(response.body);
+        this.notificationBar.show("Updated successfully", 'Close', 'blue-snackbar');
       },
       error => {
         const data: any = JSON.parse(error);
@@ -90,18 +101,23 @@ export class DynamicFormComponent implements OnInit {
   {
     let endPoint = this.service.path;
     let data = {}; 
-
+    let params = new HttpParams();
+    
     this.service.input.forEach(control => {
-      if(control.in === "body"){
-        endPoint = endPoint + this.group.value[control.key];
+      if(control.in === "query")
+      {
+        //endPoint = endPoint + this.group.value[control.key];
+        params = params.set(control.key, this.group.value[control.key]);
       }
     });
     
-     this.apiGateway.delete(endPoint).subscribe(
+     this.apiGateway.delete(endPoint,params).subscribe(
       response => {
+        this.notificationBar.show("Deleted successfully", 'Close', 'blue-snackbar');
         this.result = JSON.stringify(response);
       },
       error => {
+        this.notificationBar.show("Id not found", 'Close', 'red-snackbar');
         const data: any = JSON.parse(error);
             }
     );

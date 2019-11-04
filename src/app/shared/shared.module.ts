@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import {CdkTableModule} from '@angular/cdk/table';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {
   MatButtonModule,
   MatIconModule,
@@ -14,7 +15,9 @@ import {
   MatOptionModule,
   MatCheckboxModule,
   MatRadioModule,
-  MatTableModule
+  MatTableModule,
+  MatSnackBar,
+  MatSnackBarModule
 } from "@angular/material";
 import { CustomcardComponent } from './components/custom-card/customcard.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
@@ -22,6 +25,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/header/navbar.component';
 import { RouterModule } from '@angular/router';
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
+import { NotificationBarComponent } from './components/notification-bar/notification-bar.component';
 
 @NgModule({
   imports: [
@@ -40,7 +44,9 @@ import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgxJsonViewerModule,
+    MatSnackBarModule
 
   ],
   exports: [
@@ -63,9 +69,12 @@ import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.
     CustomcardComponent,
     DynamicFormComponent,
     NavbarComponent,
-    DynamicTableComponent
+    DynamicTableComponent,
+    NgxJsonViewerModule,
+    MatSnackBarModule
   ],
-  declarations: [CustomcardComponent,DynamicFormComponent,NavbarComponent,DynamicTableComponent]
+  declarations: [CustomcardComponent,DynamicFormComponent,NavbarComponent,DynamicTableComponent,NotificationBarComponent],
+  providers: [NotificationBarComponent]
 })
 export class SharedModule {}
 
