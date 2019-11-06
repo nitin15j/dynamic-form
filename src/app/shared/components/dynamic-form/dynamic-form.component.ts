@@ -48,14 +48,14 @@ export class DynamicFormComponent implements OnInit {
     //this.result = this.service;
     this.apiGateway.get(endPoint, params).subscribe(response => {
       if(response === null){
-        this.notificationBar.show("Not able to found with Id ", 'Close', 'red-snackbar');
+        this.notificationBar.show("Data not found ", 'Close', 'red-snackbar');
 
         //alert("Account Id not found");
       }
       else
       {
         this.result = (response);
-        this.notificationBar.show("Found successfully", 'Close', 'blue-snackbar');
+        this.notificationBar.show("Data found successfully", 'Close', 'blue-snackbar');
       }
     });
   }
@@ -74,9 +74,10 @@ export class DynamicFormComponent implements OnInit {
 
     this.apiGateway.post(endPoint, data).subscribe(response =>{
         this.result = JSON.parse(response.body);
-        this.notificationBar.show("Created successfully", 'Close', 'blue-snackbar');
+        this.notificationBar.show("Data added successfully", 'Close', 'blue-snackbar');
       },
       error => {
+        this.notificationBar.show("Data not added", 'Close', 'red-snackbar');
         const data: any = JSON.parse(error);
             }
     );
@@ -95,9 +96,10 @@ export class DynamicFormComponent implements OnInit {
     
     this.apiGateway.put(endPoint, data).subscribe(response => {
         this.result = JSON.parse(response.body);
-        this.notificationBar.show("Updated successfully", 'Close', 'blue-snackbar');
+        this.notificationBar.show("Data updated successfully", 'Close', 'blue-snackbar');
       },
       error => {
+        this.notificationBar.show("Data not updated", 'Close', 'red-snackbar');
         const data: any = JSON.parse(error);
             }
     );
@@ -123,7 +125,7 @@ export class DynamicFormComponent implements OnInit {
         this.result = JSON.stringify(response);
       },
       error => {
-        this.notificationBar.show("Id not found", 'Close', 'red-snackbar');
+        this.notificationBar.show("Data not found", 'Close', 'red-snackbar');
         const data: any = JSON.parse(error);
             }
     );
