@@ -13,7 +13,7 @@ export class NotificationBarComponent implements OnInit {
 
   show(message: string, action: string, className: string) {
     this.snackBar.open(message, action, {
-      duration: 100000,
+      duration: 10000,
       verticalPosition: 'top',
       horizontalPosition: 'center',
       panelClass: [className]
