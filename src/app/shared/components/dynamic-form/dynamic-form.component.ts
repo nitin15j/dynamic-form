@@ -34,6 +34,8 @@ export class DynamicFormComponent implements OnInit {
     let endPoint = this.service.path
     let params = new HttpParams();
     
+    this.result = "Result will come here";
+
     this.service.input.forEach(control => {
       if(control.in === "path")
       {
@@ -68,6 +70,8 @@ export class DynamicFormComponent implements OnInit {
       }
     });
     
+    this.result = "Result will come here";
+
     this.apiGateway.post(endPoint, data).subscribe(response =>{
         this.result = JSON.parse(response.body);
         this.notificationBar.show("Created successfully", 'Close', 'blue-snackbar');
@@ -86,6 +90,8 @@ export class DynamicFormComponent implements OnInit {
         data[control.key] = this.group.value[control.key];
       }
     });
+
+    this.result = "Result will come here";
     
     this.apiGateway.put(endPoint, data).subscribe(response => {
         this.result = JSON.parse(response.body);
@@ -102,7 +108,7 @@ export class DynamicFormComponent implements OnInit {
     let endPoint = this.service.path;
     let data = {}; 
     let params = new HttpParams();
-    
+    this.result = "Result will come here";
     this.service.input.forEach(control => {
       if(control.in === "query")
       {

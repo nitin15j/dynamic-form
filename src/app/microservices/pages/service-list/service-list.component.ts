@@ -19,6 +19,7 @@ export class ServiceListComponent implements OnInit {
         // loading services.json
         this.microService.loadServiceConfig('assets/services.json').subscribe(data=>{
             this.microService.config = data;
+            this.microService.serviceConfig.next(data);
             this.services = data.services;
         })
   }

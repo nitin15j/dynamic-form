@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiGatewayService } from '../shared/http/api-gateway.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class MicroservicesService { 
 
   config;
+  public serviceConfig = new BehaviorSubject<object>({});
+  serviceConfig$ = this.serviceConfig.asObservable();
 
   constructor(private apiGateway:ApiGatewayService) { }
 
