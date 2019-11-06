@@ -20,7 +20,7 @@ export class DynamicFormComponent implements OnInit {
 
     this.result = "Result will come here";
     //setting the api base path, this will hold true for all the api endpoints
-    this.apiGateway.baseApiUrl = '';
+    //this.apiGateway.baseApiUrl = '';
 
     let group: any = {};
     this.service.input.forEach(control => {

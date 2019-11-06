@@ -12,13 +12,14 @@ export class ServiceListComponent implements OnInit {
   config;
   services: Array<any>;
  
-  constructor(private microService:MicroservicesService, private authService:AuthService) { }
+  constructor(private microService:MicroservicesService, private authService:AuthService, private apiGateway:ApiGatewayService) { }
 
   ngOnInit() {
     this.authService.loggedIn.next(true);
         // loading services.json
         this.microService.loadServiceConfig('assets/services.json').subscribe(data=>{
             this.microService.config = data;
+            this.apiGateway.baseApiUrl = data.basePath;
             this.microService.serviceConfig.next(data);
             this.services = data.services;
         })
