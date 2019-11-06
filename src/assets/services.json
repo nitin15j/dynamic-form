@@ -1,7 +1,7 @@
 {
   "version" : "1.0.0",
   "title" : "AccountMgmtMS",
-  "basePath" : "http://acemicro.practice.softwarization.net",
+  "basePath" : "http://ec2-34-229-24-147.compute-1.amazonaws.com:8085",
   "logoUrl" : "https://s3-bucket-url/",
   "services" : [ {
     "method" : "getAccount",
