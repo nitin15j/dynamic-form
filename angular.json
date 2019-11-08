@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "microservice-web": {
+    "dynamic-form": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/microservice-web",
+            "outputPath": "dist/dynamic-form",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "microservice-web:build"
+            "browserTarget": "dynamic-form:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "microservice-web:build:production"
+              "browserTarget": "dynamic-form:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "microservice-web:build"
+            "browserTarget": "dynamic-form:build"
           }
         },
         "test": {
@@ -121,16 +121,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "microservice-web:serve"
+            "devServerTarget": "dynamic-form:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "microservice-web:serve:production"
+              "devServerTarget": "dynamic-form:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "microservice-web"
+  "defaultProject": "dynamic-form"
 }

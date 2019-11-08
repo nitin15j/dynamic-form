@@ -26,6 +26,8 @@ import { NavbarComponent } from './components/header/navbar.component';
 import { RouterModule } from '@angular/router';
 import { DynamicTableComponent } from './components/dynamic-table/dynamic-table.component';
 import { NotificationBarComponent } from './components/notification-bar/notification-bar.component';
+import { ButtonComponent } from './components/button/button.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   imports: [
@@ -73,7 +75,7 @@ import { NotificationBarComponent } from './components/notification-bar/notifica
     NgxJsonViewerModule,
     MatSnackBarModule
   ],
-  declarations: [CustomcardComponent,DynamicFormComponent,NavbarComponent,DynamicTableComponent,NotificationBarComponent],
+  declarations: [CustomcardComponent,DynamicFormComponent,NavbarComponent,DynamicTableComponent,NotificationBarComponent, ButtonComponent, InputComponent],
   providers: [NotificationBarComponent]
 })
 export class SharedModule {}

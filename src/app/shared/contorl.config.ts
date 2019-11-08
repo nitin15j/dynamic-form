@@ -6,4 +6,5 @@ options?: string[];
 collections?: any;
 type: string;
 value?: any;
+validations?:[];
 }
