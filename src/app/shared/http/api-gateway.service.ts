@@ -35,7 +35,7 @@ export class ApiGatewayService {
    */
 
   post(path: string, body: any): Observable<any> {
-    const reqOptions: object = { observe: 'response', responseType: 'text', withCredentials: true };
+    const reqOptions: object = { observe: 'response', responseType: 'text', withCredentials: false };
 
     return this.http.post(`${this.baseApiUrl}${path}`, body, reqOptions);
   }
@@ -43,7 +43,7 @@ export class ApiGatewayService {
    * perform a PUT request to the API. Returns an Observable stream.
    */
   put(path: string, body: any): Observable<any> {
-    const reqOptions: object = { observe: 'response', responseType: 'text', withCredentials: true };
+    const reqOptions: object = { observe: 'response', responseType: 'text', withCredentials: false };
 
     return this.http.put(`${this.baseApiUrl}${path}`, body, reqOptions);
   }
