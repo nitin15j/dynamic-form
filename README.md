@@ -4,6 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Dynamic Form is a project where we are generating form screens based on a configuration (json) file. This Json file is the heart of the project. Developer can design a form by just defining different controls, validations, lables, and other items in the configuration file. 
 
+Developer can also configure the API endpoint to connect it with remote apis, this is more like a cherry on a cake. Some of the notable features of this application are:
+1. Configure form in Json, application layout service will create it accordingly at runtime
+2. Configure control Validations
+3. Configure API endpoint which will be used to send Form data
+4. Configure response DTO
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
