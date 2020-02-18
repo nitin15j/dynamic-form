@@ -10,6 +10,9 @@ Developer can also configure the API endpoint to connect it with remote apis, th
 3. Configure API endpoint which will be used to send Form data
 4. Configure response DTO
 
+Demo
+You can find working demo on Netlyfy, check this here Microfronend and to check the single, independent running feature, click here microfrontend-team-movies
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
